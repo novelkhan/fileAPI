@@ -21,7 +21,7 @@ namespace fileAPI.Controllers
     public class FileManagerController : ControllerBase
     {
         private readonly string AppDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-        private static List<FileRecord> fileDB = new List<FileRecord>();
+        private static List<FileRecordDTO> fileDB = new List<FileRecordDTO>();
         private readonly ApplicationDbContext dBContext;
 
 
@@ -33,11 +33,11 @@ namespace fileAPI.Controllers
 
         [HttpPost]
         [Consumes("multipart/form-data")]
-        public async Task<HttpResponseMessage> PostAsync([FromForm] FileModel model)
+        public async Task<HttpResponseMessage> PostAsync([FromForm] FileDTO model)
         {
             try
             {
-                FileRecord file = await SaveFileAsync(model.MyFile);
+                FileRecordDTO file = await SaveFileAsync(model.MyFile);
 
                 if (!string.IsNullOrEmpty(file.FilePath))
                 {
@@ -61,9 +61,9 @@ namespace fileAPI.Controllers
             }
         }
 
-        private async Task<FileRecord> SaveFileAsync(IFormFile myFile)
+        private async Task<FileRecordDTO> SaveFileAsync(IFormFile myFile)
         {
-            FileRecord file = new FileRecord();
+            FileRecordDTO file = new FileRecordDTO();
             if (myFile != null)
             {
                 if (!Directory.Exists(AppDirectory))
@@ -88,7 +88,7 @@ namespace fileAPI.Controllers
             return file;
         }
 
-        private void SaveToDB(FileRecord record)
+        private void SaveToDB(FileRecordDTO record)
         {
             if (record == null)
                 throw new ArgumentNullException($"{nameof(record)}");
@@ -106,12 +106,12 @@ namespace fileAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FileRecord>>> GetAllFiles()
+        public async Task<ActionResult<IEnumerable<FileRecordDTO>>> GetAllFiles()
         {
             //getting data from inmemory obj
             //return fileDB;
             //getting data from SQL DB
-            return await dBContext.FileData.Select(n => new FileRecord
+            return await dBContext.FileData.Select(n => new FileRecordDTO
             {
                 Id = n.Id,
                 ContentType = n.MimeType,

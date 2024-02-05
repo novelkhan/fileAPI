@@ -2,7 +2,7 @@
 
 namespace fileAPI.DTOs.FileManager
 {
-    public class FileModel
+    public class FileModelDTO
     {
         public IFormFile MyFile { get; set; }
         public string AltText { get; set; }

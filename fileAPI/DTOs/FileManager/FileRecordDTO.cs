@@ -1,6 +1,6 @@
 ﻿namespace fileAPI.DTOs.FileManager
 {
-    public class FileRecord
+    public class FileRecordDTO
     {
         public int Id { get; set; }
         public string FileName { get; set; }
