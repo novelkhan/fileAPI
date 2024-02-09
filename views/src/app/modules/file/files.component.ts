@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './files.component.scss'
 })
 export class FilesComponent {
+
   public pageTitle = 'Welcome to View Files component';
   constructor(private http:  HttpClient) {
     this.getAllFiles();
@@ -32,4 +33,5 @@ export class FilesComponent {
       console.log("Success");
     });
   }
+
 }

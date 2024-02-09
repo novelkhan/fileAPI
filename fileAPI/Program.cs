@@ -22,11 +22,11 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
         {
-            //policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-            policy.AllowAnyMethod()
-              .AllowAnyHeader()
-              .SetIsOriginAllowed(origin => true) // allow any origin
-              .AllowCredentials();
+            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            //policy.AllowAnyMethod()
+            //  .AllowAnyHeader()
+            //  .SetIsOriginAllowed(origin => true) // allow any origin
+            //  .AllowCredentials();
         });
 });
 

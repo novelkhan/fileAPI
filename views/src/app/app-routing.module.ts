@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 const routes: Routes = [
   {path: '', component: HomeComponent},
   // Implementing lazy loading by following format
-  {path:'files', loadChildren: () => import('./modules/files/files.module').then(module => module.FilesModule)},
+  {path: 'files', loadChildren: ()=> import('./modules/file/file.module').then(module => module.FileModule)},
   {path: 'not-found', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent, pathMatch: 'full'}
 ];

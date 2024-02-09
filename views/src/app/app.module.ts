@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { FilesModule } from './modules/files/files.module';
+import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './components/errors/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ValidationMessageComponent } from './components/errors/validation-message/validation-message.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FileModule } from './modules/file/file.module';
 
 @NgModule({
   declarations: [
@@ -16,17 +15,15 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ValidationMessageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FilesModule,
-    HttpClientModule
+    FileModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

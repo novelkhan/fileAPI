@@ -33,7 +33,7 @@ namespace fileAPI.Controllers
 
         [HttpPost]
         [Consumes("multipart/form-data")]
-        public async Task<HttpResponseMessage> PostAsync([FromForm] FileDTO model)
+        public async Task<HttpResponseMessage> PostAsync([FromForm] FileModelDTO model)
         {
             try
             {
