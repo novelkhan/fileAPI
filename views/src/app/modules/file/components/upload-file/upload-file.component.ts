@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class UploadFileComponent {
 
   public pageTitle = 'Welcome to fileupload component';
+
+  @ViewChild('fileInput') fileInput: any;
+
   fileForm = new FormGroup({
     altText: new FormControl(''),
     description: new FormControl('')
@@ -24,7 +27,8 @@ export class UploadFileComponent {
   {
     debugger
     const formData: FormData = new FormData();
-    formData.append('myFile', this.fileToUpload);
+    // formData.append('myFile', this.fileToUpload);
+    formData.append('myFile', this.fileInput.nativeElement.files[0]);
     formData.append('altText', (this.fileForm.value.altText) as string);
     formData.append('description', (this.fileForm.value.description) as string);
     return this.http.post('https://localhost:7077/api/filemanager', formData,
