@@ -8,7 +8,7 @@ import { AddFileComponent } from './components/add-file/add-file.component';
 const routes: Routes = [
   {path: '', component: FilesComponent},
   {path: 'all-files', component: AllFilesComponent},
-  {path: 'upload', title: 'Upload' ,component: UploadFileComponent}
+  {path: 'upload', title: 'Upload' ,component: UploadFileComponent},
   {path: 'add', title: 'Add' ,component: AddFileComponent}
 ];
 
